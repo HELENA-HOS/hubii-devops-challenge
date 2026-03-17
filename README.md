@@ -71,15 +71,71 @@ Acessar:
 http://localhost:8080/health
 ```
 
-## 📌 Próximas etapas
-- Kubernetes
-- CI/CD
-- Terraform
-- Segurança
-
 ## 🔧 Possíveis melhorias
 
 - Utilizar multi-stage build para otimização da imagem
 - Adicionar cache de dependências
 - Implementar logs estruturados
 - Adicionar autenticação no endpoint
+
+---
+
+## ☸️ Parte 3 — Kubernetes
+
+Foram criados manifestos Kubernetes para executar a aplicação em um cluster.
+
+### Estrutura
+
+- Deployment
+- Service
+- Ingress
+
+### Deployment
+
+Responsável por gerenciar os pods da aplicação.
+
+Principais configurações:
+
+- Definição de `replicas`
+- Variável de ambiente `APP_ENV`
+- Requests e limits de CPU e memória
+- Configuração de `readinessProbe` e `livenessProbe` utilizando o endpoint `/health`
+
+### Service
+
+Responsável por expor a aplicação internamente no cluster.
+
+- Tipo: `ClusterIP`
+- Porta 80 direcionando para a porta 8080 do container
+
+### Ingress
+
+Responsável por expor a aplicação externamente.
+
+- Configuração de rota para o serviço `hubii-service`
+
+---
+
+### 🔐 Boas práticas de segurança
+
+Neste projeto não foram utilizados segredos sensíveis diretamente nos manifestos.
+
+Em cenários reais, informações como senhas e tokens devem ser gerenciadas utilizando:
+
+- Kubernetes Secrets
+- Ferramentas de gestão de segredos (ex: AWS Secrets Manager, Vault)
+
+---
+
+### 📌 Observações
+
+Os manifestos foram estruturados seguindo boas práticas de organização, separando aplicação e infraestrutura e utilizando configurações básicas de observabilidade e controle de recursos.
+
+---
+
+## 📌 Próximas etapas
+
+- CI/CD
+- Terraform
+- Segurança
+
