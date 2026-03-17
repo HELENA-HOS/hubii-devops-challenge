@@ -12,6 +12,28 @@ Projeto desenvolvido para demonstrar conhecimentos práticos em:
 - Segurança (DevSecOps)
 
 ---
+
+## 🧭 Arquitetura do projeto
+
+Fluxo simplificado da solução:
+
+```
+Usuário
+↓
+API (FastAPI)
+↓
+Docker
+↓
+Kubernetes (Deployment + Service + Ingress)
+↓
+CI/CD (GitHub Actions)
+↓
+Terraform (Infraestrutura como Código)
+↓
+Cloud (AWS)
+```
+
+---
 ## 📚 Índice
 
 - [🚀 Parte 1 — Aplicação](#-parte-1--aplicação)
@@ -19,7 +41,7 @@ Projeto desenvolvido para demonstrar conhecimentos práticos em:
 - [☸️ Parte 3 — Kubernetes](#-parte-3--kubernetes)
 - [🔄 Parte 4 — Pipeline CI/CD](#-parte-4--pipeline-cicd)
 - [🌍 Parte 5 — Terraform](#-parte-5--terraform-infraestrutura-como-código)
-- [🔐 Parte 6 — Seguranca](#-parte-6--seguranca)
+- [🔐 Parte 6 — Segurança](#-parte-6--segurança)
 
 ---
 
@@ -355,7 +377,7 @@ Em um cenário real:
 
 ---
 
-## 🔐 Parte 6 — Seguranca
+## 🔐 Parte 6 — Segurança
 
 As práticas de segurança adotadas no projeto podem ser consultadas no documento abaixo:
 
