@@ -347,7 +347,17 @@ Em um cenário real:
 
 ---
 
-## 📌 Próximas etapas
+## 🔐 Parte 6 - Segurança
 
-- Segurança
+As práticas de segurança adotadas no projeto podem ser consultadas no documento abaixo:
+
+[Documentação de Segurança](docs/security.md)
+
+---
+## 👩🏽‍💻 Autora
+
+Helena Oliveira Silva  
+DevOps | SRE | Automação
+
+
 
