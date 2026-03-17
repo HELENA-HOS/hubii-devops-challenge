@@ -1,0 +1,1 @@
+bucket_name = "helena-hubii-devops-bucket"
