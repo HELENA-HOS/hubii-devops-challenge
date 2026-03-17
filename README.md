@@ -218,11 +218,22 @@ Esses steps são executados em ordem reversa (LIFO — Last In, First Out), o qu
 
 Em um cenário de produção, poderiam ser implementadas melhorias como:
 
+#### 🔐 Segurança (DevSecOps)
+
 - Definição de políticas de severidade mais refinadas
 - Atualização automatizada de imagens base
 - Integração com ferramentas de gestão de vulnerabilidades
 - Geração de relatórios estruturados (JSON ou SARIF)
 - Integração com ferramentas de segurança contínua (DevSecOps)
+
+#### ⚙️ Pipeline e engenharia
+
+- Cache de dependências Python
+- Build e push de imagem para registry (Docker Hub / ECR)
+- Testes automatizados da aplicação
+- Uso de ambientes (dev/staging/prod)
+- Integração com ferramentas de observabilidade
+- Scan de dependências (SCA)
 
 ---
 
