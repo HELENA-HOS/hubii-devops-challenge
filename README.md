@@ -135,18 +135,35 @@ Os manifestos foram estruturados seguindo boas práticas de organização, separ
 
 ## 🔁 Parte 4 — Pipeline CI/CD
 
-Foi implementado um pipeline de Integração Contínua utilizando GitHub Actions, com o objetivo de automatizar validações básicas da aplicação e análise de segurança da imagem Docker.
+Foi implementado um pipeline de Integração Contínua utilizando GitHub Actions, com o objetivo de automatizar validações básicas da aplicação, infraestrutura e análise de segurança da imagem Docker.
 
 ### ⚙️ Etapas do pipeline
 
 O pipeline é executado a cada push na branch principal (`main`) e contempla as seguintes etapas:
 
-- Checkout do código
-- Setup do ambiente Python
-- Instalação de dependências
-- Validação de sintaxe do código (lint básico)
-- Build da imagem Docker
-- Scan de vulnerabilidades com Trivy
+1. **Checkout do código**
+2. **Configuração do ambiente Python (lint básico)**
+3. **Instalação de dependências**
+4. **Validação de sintaxe da aplicação Python**
+5. **Validação de infraestrutura com Terraform**
+6. **Build da imagem Docker**
+7. **Scan de vulnerabilidades com Trivy**
+
+---
+
+### 🧠 Validação de Terraform
+
+Foi adicionada uma etapa de validação da infraestrutura como código utilizando Terraform, contendo:
+
+- `terraform init -backend=false`
+- `terraform fmt -check`
+- `terraform validate`
+
+Essa etapa garante:
+
+- Correção da sintaxe dos arquivos `.tf`
+- Padronização de formatação
+- Integridade da configuração antes do uso
 
 ---
 
@@ -209,8 +226,117 @@ Em um cenário de produção, poderiam ser implementadas melhorias como:
 
 ---
 
+
+## 🌍 Parte 5 — Terraform (Infraestrutura como Código)
+
+Foi implementado um exemplo simples de infraestrutura utilizando Terraform, com o objetivo de demonstrar conceitos fundamentais de Infraestrutura como Código (IaC), organização de variáveis e validação em pipeline CI/CD.
+
+---
+
+### 📁 Estrutura
+
+Os arquivos foram organizados na pasta `terraform/`:
+
+- `main.tf` → definição dos recursos
+- `variables.tf` → declaração das variáveis
+- `terraform.tfvars` → valores das variáveis
+- `outputs.tf` → saída de informações relevantes
+
+---
+
+### ⚙️ Recurso provisionado
+
+Foi definido um recurso simples:
+
+- **Bucket S3 (AWS)**
+
+Este recurso foi escolhido por ser amplamente utilizado e suficiente para demonstrar conceitos básicos de provisionamento em cloud.
+
+---
+
+### 🧠 Uso de variáveis
+
+As variáveis foram utilizadas para tornar o código reutilizável e flexível.
+
+Exemplos:
+
+- `bucket_name`
+- `aws_region`
+- `environment`
+
+Os valores são definidos no arquivo `terraform.tfvars`, garantindo separação entre configuração e código.
+
+---
+
+### 🔄 Fluxo de utilização
+
+O fluxo do Terraform neste projeto segue:
+
+1. Declaração de variáveis (`variables.tf`)
+2. Atribuição de valores (`terraform.tfvars`)
+3. Uso das variáveis nos recursos (`main.tf`)
+4. Exposição de outputs (`outputs.tf`)
+
+---
+
+### 📤 Outputs
+
+Foi definido um output para exibir o nome do bucket criado:
+
+- `bucket_name`
+
+Outputs permitem visualizar informações importantes após execução e facilitam integrações futuras.
+
+---
+
+### 🔍 Validação no pipeline CI/CD
+
+A infraestrutura é validada automaticamente na pipeline, garantindo qualidade antes de qualquer uso.
+
+Etapas aplicadas:
+
+- `terraform init -backend=false`
+- `terraform fmt -check`
+- `terraform validate`
+
+Essa validação garante:
+
+- Sintaxe correta
+- Código padronizado
+- Configuração consistente
+
+---
+
+### 🚫 Execução não obrigatória
+
+Não foi realizado `terraform apply`, pois o objetivo do desafio é validar conhecimento estrutural e organização do código, não sendo necessário provisionar recursos reais.
+
+---
+
+### 🧠 Decisões técnicas
+
+- Uso de variáveis para evitar hardcoding
+- Separação entre código e configuração
+- Estrutura modular e organizada
+- Integração com pipeline CI/CD
+- Validação automatizada da infraestrutura
+
+---
+
+### 🔧 Possíveis melhorias
+
+Em um cenário real:
+
+- Backend remoto para state (S3 + DynamoDB)
+- Uso de módulos reutilizáveis
+- Workspaces para múltiplos ambientes
+- Integração com CI/CD para apply controlado
+- Políticas de segurança (IAM com menor privilégio)
+- Validação avançada de variáveis
+
+---
+
 ## 📌 Próximas etapas
 
-- Terraform
 - Segurança
 
