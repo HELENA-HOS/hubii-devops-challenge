@@ -2,16 +2,24 @@
 
 ## 📌 Sobre o projeto
 
-Este projeto foi desenvolvido como parte de um desafio técnico para a vaga de Jr DevOps Analyst.
+Projeto desenvolvido para demonstrar conhecimentos práticos em:
 
-O objetivo é demonstrar conhecimentos básicos em:
-
-- Desenvolvimento de aplicações
+- APIs e aplicações backend
 - Containerização com Docker
 - Orquestração com Kubernetes
-- CI/CD
-- Infraestrutura como código
-- Boas práticas de segurança
+- CI/CD com GitHub Actions
+- Infraestrutura como Código (Terraform)
+- Segurança (DevSecOps)
+
+---
+## 📚 Índice
+
+- [🚀 Parte 1 — Aplicação](#-parte-1--aplicação)
+- [🐳 Parte 2 — Containerização com Docker](#-parte-2--containerização-com-docker)
+- [☸️ Parte 3 — Kubernetes](#-parte-3--kubernetes)
+- [🔄 Parte 4 — Pipeline CI/CD](#-parte-4--pipeline-cicd)
+- [🌍 Parte 5 — Terraform](#-parte-5--terraform-infraestrutura-como-código)
+- [🔐 Parte 6 — Seguranca](#-parte-6--seguranca)
 
 ---
 
@@ -80,7 +88,7 @@ http://localhost:8080/health
 
 ---
 
-## ☸️ Parte 3 — Kubernetes
+## ☸ Parte 3 — Kubernetes
 
 Foram criados manifestos Kubernetes para executar a aplicação em um cluster.
 
@@ -347,7 +355,7 @@ Em um cenário real:
 
 ---
 
-## 🔐 Parte 6 - Segurança
+## 🔐 Parte 6 — Seguranca
 
 As práticas de segurança adotadas no projeto podem ser consultadas no documento abaixo:
 
