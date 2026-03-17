@@ -35,12 +35,21 @@ jobs:
         run: |
           docker build -t hubii-devops-app .
 
-      # 6. Scan de vulnerabilidade com Trivy
-      - name: Scan com Trivy
+      # 6. Scan de completo de vulnerabilidade com Trivy
+      - name: Scan completo (visibilidade)
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: hubii-devops-app
           format: table
+          exit-code: 0
+          ignore-unfixed: true
+
+      # 7. Scan de vulnerabilidade crítica (segurança)
+      - name: Falha apenas se CRITICAL
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: hubii-devops-app
+          format: table
+          severity: CRITICAL
           exit-code: 1
           ignore-unfixed: true
-          severity: CRITICAL
