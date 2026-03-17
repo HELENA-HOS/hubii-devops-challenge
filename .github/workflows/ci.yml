@@ -1,0 +1,45 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Baixar código
+      - name: Checkout código
+        uses: actions/checkout@v3
+
+      # 2. Configurar Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      # 3. Instalar dependências
+      - name: Instalar dependências
+        run: |
+          pip install -r requirements.txt
+
+      # 4. Lint simples (validação básica)
+      - name: Verificar sintaxe Python
+        run: |
+          python -m py_compile app/main.py
+
+      # 5. Build da imagem Docker
+      - name: Build Docker image
+        run: |
+          docker build -t hubii-devops-app .
+
+      # 6. Scan de vulnerabilidade com Trivy
+      - name: Scan com Trivy
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: hubii-devops-app
+          format: table
+          exit-code: 1
+          ignore-unfixed: true
