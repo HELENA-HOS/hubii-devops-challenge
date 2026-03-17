@@ -30,12 +30,26 @@ jobs:
         run: |
           python -m py_compile app/main.py
 
-      # 5. Build da imagem Docker
+      # 5. Validar Terraform (validação sintaxe)
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init -backend=false
+
+      - name: Terraform Validate
+        run: |
+          cd terraform
+          terraform validate
+
+      # 6. Build da imagem Docker
       - name: Build Docker image
         run: |
           docker build -t hubii-devops-app .
 
-      # 6. Scan de completo de vulnerabilidade com Trivy
+      # 7. Scan de completo de vulnerabilidade com Trivy
       - name: Scan completo (visibilidade)
         uses: aquasecurity/trivy-action@master
         with:
@@ -44,7 +58,7 @@ jobs:
           exit-code: 0
           ignore-unfixed: true
 
-      # 7. Scan de vulnerabilidade crítica (segurança)
+      # 8. Scan de vulnerabilidade crítica (segurança)
       - name: Falha apenas se CRITICAL
         uses: aquasecurity/trivy-action@master
         with:
