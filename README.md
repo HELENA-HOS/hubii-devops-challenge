@@ -133,9 +133,84 @@ Os manifestos foram estruturados seguindo boas práticas de organização, separ
 
 ---
 
+## 🔁 Parte 4 — Pipeline CI/CD
+
+Foi implementado um pipeline de Integração Contínua utilizando GitHub Actions, com o objetivo de automatizar validações básicas da aplicação e análise de segurança da imagem Docker.
+
+### ⚙️ Etapas do pipeline
+
+O pipeline é executado a cada push na branch principal (`main`) e contempla as seguintes etapas:
+
+- Checkout do código
+- Setup do ambiente Python
+- Instalação de dependências
+- Validação de sintaxe do código (lint básico)
+- Build da imagem Docker
+- Scan de vulnerabilidades com Trivy
+
+---
+
+### 🔍 Scan de vulnerabilidades
+
+A análise de vulnerabilidades foi implementada utilizando a ferramenta **Trivy**, com uma abordagem em duas etapas:
+
+#### 1. Scan completo (visibilidade)
+
+Executa uma análise completa da imagem Docker, considerando vulnerabilidades de todos os níveis:
+
+- LOW
+- MEDIUM
+- HIGH
+- CRITICAL
+
+Essa etapa **não bloqueia o pipeline**, permitindo visibilidade total dos riscos identificados.
+
+#### 2. Scan com política de falha (fail policy)
+
+Executa uma nova análise considerando apenas vulnerabilidades do tipo:
+
+- CRITICAL
+
+O pipeline é configurado para **falhar caso sejam encontradas vulnerabilidades críticas**, garantindo controle sobre riscos mais severos.
+
+---
+
+### 🧠 Decisão técnica
+
+A separação entre visibilidade e controle foi adotada para equilibrar segurança e viabilidade do fluxo de entrega.
+
+Vulnerabilidades de níveis mais baixos (LOW, MEDIUM e HIGH) podem estar relacionadas a dependências da imagem base e nem sempre estão sob controle direto da aplicação. Por isso, são reportadas, mas não bloqueiam o pipeline.
+
+Já vulnerabilidades CRITICAL representam riscos mais severos e, portanto, são tratadas como critério de falha.
+
+Essa abordagem foi adotada para equilibrar visibilidade e controle, permitindo acompanhamento contínuo de vulnerabilidades sem comprometer o fluxo de entrega por problemas fora do controle direto da aplicação.
+
+---
+
+### 🔄 Observação sobre execução dos steps
+
+Durante a execução do pipeline, podem aparecer etapas com prefixo `Post` (ex: `Post Scan completo`).
+
+Essas etapas são geradas automaticamente pelas actions utilizadas e representam processos de finalização (cleanup), como liberação de recursos e limpeza de ambiente.
+
+Esses steps são executados em ordem reversa (LIFO — Last In, First Out), o que pode causar uma diferença visual na sequência exibida no GitHub Actions, sem impactar a lógica do pipeline.
+
+---
+
+### 🔧 Possíveis melhorias
+
+Em um cenário de produção, poderiam ser implementadas melhorias como:
+
+- Definição de políticas de severidade mais refinadas
+- Atualização automatizada de imagens base
+- Integração com ferramentas de gestão de vulnerabilidades
+- Geração de relatórios estruturados (JSON ou SARIF)
+- Integração com ferramentas de segurança contínua (DevSecOps)
+
+---
+
 ## 📌 Próximas etapas
 
-- CI/CD
 - Terraform
 - Segurança
 
