@@ -30,19 +30,28 @@ jobs:
         run: |
           python -m py_compile app/main.py
 
-      # 5. Validar Terraform (validação sintaxe)
+       # 5. Validar Terraform 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
+
+      - name: List Terraform files
+        run: |
+          ls -la terraform
 
       - name: Terraform Init
         run: |
           cd terraform
           terraform init -backend=false
 
+      - name: Terraform Format Check
+        run: |
+          cd terraform
+          terraform fmt -check
+
       - name: Terraform Validate
         run: |
           cd terraform
-          terraform validate
+          terraform validate -no-color
 
       # 6. Build da imagem Docker
       - name: Build Docker image
