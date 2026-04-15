@@ -1,15 +1,10 @@
-# Hubii DevOps Challenge
+# Devops Lab Project
 
 ## 📌 Sobre o projeto
 
-Projeto desenvolvido para demonstrar conhecimentos práticos em:
+Este projeto foi desenvolvido como iniciativa prática de estudo e consolidação de conhecimentos em DevOps, com foco na construção de uma solução completa, desde a aplicação até a infraestrutura e segurança.
 
-- APIs e aplicações backend
-- Containerização com Docker
-- Orquestração com Kubernetes
-- CI/CD com GitHub Actions
-- Infraestrutura como Código (Terraform)
-- Segurança (DevSecOps)
+O objetivo foi simular um fluxo real de entrega, conectando diferentes camadas como aplicação, containerização, orquestração, CI/CD e infraestrutura como código.
 
 ---
 
@@ -47,7 +42,7 @@ Cloud (AWS)
 
 ## 🚀 Parte 1 — Aplicação
 
-Foi desenvolvida uma aplicação simples utilizando **FastAPI**, expondo um endpoint de health check.
+Foi desenvolvida uma aplicação simples utilizando **FastAPI**, com foco em simular um endpoint de health check em um cenário real de monitoramento
 
 ### Endpoint
 ```
@@ -165,7 +160,9 @@ Os manifestos foram estruturados seguindo boas práticas de organização, separ
 
 ## 🔁 Parte 4 — Pipeline CI/CD
 
-Foi implementado um pipeline de Integração Contínua utilizando GitHub Actions, com o objetivo de automatizar validações básicas da aplicação, infraestrutura e análise de segurança da imagem Docker.
+O pipeline de Integração Contínua foi estruturado utilizando GitHub Actions, com foco em automação, validação e segurança ao longo do fluxo de entrega da aplicação.
+
+Seu objetivo é garantir a qualidade do código, validar a infraestrutura e identificar vulnerabilidades ainda durante o processo de integração.
 
 ### ⚙️ Etapas do pipeline
 
@@ -199,7 +196,7 @@ Essa etapa garante:
 
 ### 🔍 Scan de vulnerabilidades
 
-A análise de vulnerabilidades foi implementada utilizando a ferramenta **Trivy**, com uma abordagem em duas etapas:
+A análise de vulnerabilidades foi estruturada utilizando a ferramenta **Trivy**, com uma abordagem em duas etapas:
 
 #### 1. Scan completo (visibilidade)
 
@@ -270,7 +267,8 @@ Em um cenário de produção, poderiam ser implementadas melhorias como:
 
 ## 🌍 Parte 5 — Terraform (Infraestrutura como Código)
 
-Foi implementado um exemplo simples de infraestrutura utilizando Terraform, com o objetivo de demonstrar conceitos fundamentais de Infraestrutura como Código (IaC), organização de variáveis e validação em pipeline CI/CD.
+Foi estruturado um exemplo simples de infraestrutura utilizando Terraform, com o objetivo de demonstrar conceitos fundamentais de Infraestrutura como Código (IaC), organização de variáveis e validação em pipeline CI/CD.
+A estrutura foi pensada para facilitar reutilização e adaptação para múltiplos ambientes.
 
 ---
 
@@ -305,7 +303,7 @@ Exemplos:
 - `aws_region`
 - `environment`
 
-Os valores são definidos no arquivo `terraform.tfvars`, garantindo separação entre configuração e código.
+Os valores são declarados no arquivo `terraform.tfvars`, garantindo separação entre configuração e código.
 
 ---
 
@@ -322,7 +320,7 @@ O fluxo do Terraform neste projeto segue:
 
 ### 📤 Outputs
 
-Foi definido um output para exibir o nome do bucket criado:
+Foi estruturado um output para exibir o nome do bucket criado:
 
 - `bucket_name`
 
@@ -379,7 +377,7 @@ Em um cenário real:
 
 ## 🔐 Parte 6 — Segurança
 
-As práticas de segurança adotadas no projeto podem ser consultadas no documento abaixo:
+As práticas de segurança foram documentadas separadamente, seguindo boas práticas de organização e clareza:
 
 [Documentação de Segurança](docs/security.md)
 
