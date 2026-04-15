@@ -1,1 +1,1 @@
-bucket_name = "helena-hubii-devops-bucket"
+bucket_name = "helena-lab-devops-bucket"

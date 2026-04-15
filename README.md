@@ -81,12 +81,12 @@ A aplicação foi containerizada utilizando Docker.
 ### Build da imagem
 
 ```bash
-docker build -t hubii-devops-app .
+docker build -t lab-devops-app .
 ```
 
 ### Execução do container
 ```bash
-docker run -p 8080:8080 -e APP_ENV=local hubii-devops-app
+docker run -p 8080:8080 -e APP_ENV=local lab-devops-app
 ```
 
 ### Teste
@@ -137,7 +137,7 @@ Responsável por expor a aplicação internamente no cluster.
 
 Responsável por expor a aplicação externamente.
 
-- Configuração de rota para o serviço `hubii-service`
+- Configuração de rota para o serviço `lab-service`
 
 ---
 

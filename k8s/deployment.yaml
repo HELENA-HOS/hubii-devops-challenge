@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hubii-app
+  name: lab-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hubii-app
+      app: lab-app
   template:
     metadata:
       labels:
-        app: hubii-app
+        app: lab-app
     spec:
       containers:
-        - name: hubii-container
-          image: hubii-devops-app
+        - name: lab-container
+          image: lab-devops-app
           ports:
             - containerPort: 8080
 

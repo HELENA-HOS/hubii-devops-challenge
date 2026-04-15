@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hubii-service
+  name: lab-service
 spec:
   selector:
-    app: hubii-app
+    app: lab-app
   ports:
     - protocol: TCP
       port: 80

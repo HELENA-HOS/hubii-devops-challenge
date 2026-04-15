@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hubii-ingress
+  name: lab-ingress
 spec:
   rules:
-    - host: hubii.local
+    - host: lab.local
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: hubii-service
+                name: lab-service
                 port:
                   number: 80
